@@ -1,3 +1,5 @@
+import com.nerugprogramador.screenmatch.modelos.Pelicula;
+
 public class Principal {
     public static void main(String[] args) {
         Pelicula miPelicula = new Pelicula();
@@ -12,11 +14,11 @@ public class Principal {
         System.out.println(miPelicula.getTotalDeLasEvaluaciones());
         System.out.println(miPelicula.calculaMedia());
 
-        Pelicula otraPelicula = new Pelicula();
+/*        Pelicula otraPelicula = new Pelicula();
         otraPelicula.nombre = "Matrix";
         otraPelicula.fechaDeLanzamiento = 1998;
         otraPelicula.duracionEnMinutos = 180;
 
-//        otraPelicula.nuestraFichaTecnica();
+        otraPelicula.nuestraFichaTecnica();*/
     }
 }
