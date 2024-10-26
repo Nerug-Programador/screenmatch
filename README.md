@@ -2,4 +2,4 @@
 
 ## Estado
 
-        En contrucción
+        En construcción 
