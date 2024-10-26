@@ -1,4 +1,7 @@
 import com.nerugprogramador.screenmatch.modelos.Pelicula;
+import com.nerugprogramador.screenmatch.modelos.Serie;
+
+import java.security.SecureRandom;
 
 public class Principal {
     public static void main(String[] args) {
@@ -15,11 +18,14 @@ public class Principal {
         System.out.println(miPelicula.getTotalDeLasEvaluaciones());
         System.out.println(miPelicula.calculaMedia());
 
-/*        Pelicula otraPelicula = new Pelicula();
-        otraPelicula.nombre = "Matrix";
-        otraPelicula.fechaDeLanzamiento = 1998;
-        otraPelicula.duracionEnMinutos = 180;
+        Serie casaDragon = new Serie();
+        casaDragon.setNombre("La casa del dragón");
+        casaDragon.setFechaDeLanzamiento(2022);
+        casaDragon.setTemporadas(1);
+        casaDragon.setMinutosPorEpisodios(50);
+        casaDragon.setEpisodiosPorTemporada(10);
+        casaDragon.nuestraFichaTecnica();
+        System.out.println(casaDragon.getDuracionEnMinutos());
 
-        otraPelicula.nuestraFichaTecnica();*/
     }
 }
