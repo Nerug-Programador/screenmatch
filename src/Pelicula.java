@@ -3,4 +3,22 @@ public class Pelicula {
     int fechaDeLanzamiento;
     int duracionEnMinutos;
     boolean incluidoEnElPlan;
+    double sumaDeLasEvaluaciones;
+
+    int totalDeLasEvaluaciones;
+
+    void nuestraFichaTecnica(){
+        System.out.println("El nombre de película es: " + nombre);
+        System.out.println("Su fecha de lanzamientos es: " + fechaDeLanzamiento);
+        System.out.println("Duración en minutos: " + duracionEnMinutos);
+    }
+
+    void evalua(double nota){
+        sumaDeLasEvaluaciones += nota;
+        totalDeLasEvaluaciones++;
+    }
+
+    double calculaMedia(){
+        return sumaDeLasEvaluaciones / totalDeLasEvaluaciones;
+    }
 }
