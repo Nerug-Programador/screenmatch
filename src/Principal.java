@@ -1,7 +1,6 @@
+import com.nerugprogramador.screenmatch.calculos.CalculadoraDeTiempo;
 import com.nerugprogramador.screenmatch.modelos.Pelicula;
 import com.nerugprogramador.screenmatch.modelos.Serie;
-
-import java.security.SecureRandom;
 
 public class Principal {
     public static void main(String[] args) {
@@ -26,6 +25,20 @@ public class Principal {
         casaDragon.setEpisodiosPorTemporada(10);
         casaDragon.nuestraFichaTecnica();
         System.out.println(casaDragon.getDuracionEnMinutos());
+
+        Pelicula otraPelicula = new Pelicula();
+        otraPelicula.setNombre("Matrix");
+        otraPelicula.setFechaDeLanzamiento(1998);
+        otraPelicula.setDuracionEnMinutos(180);
+
+
+        CalculadoraDeTiempo caluladora = new CalculadoraDeTiempo();
+        caluladora.incluye(miPelicula);
+        caluladora.incluye(casaDragon);
+        caluladora.incluye(otraPelicula);
+        System.out.println("tiempo necesario para ver tus títulos favoritos estas vacaciones " + caluladora.getTiempoTotal() + " minutos.");
+
+
 
     }
 }
