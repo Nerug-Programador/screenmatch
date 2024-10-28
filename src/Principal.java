@@ -37,8 +37,5 @@ public class Principal {
         caluladora.incluye(casaDragon);
         caluladora.incluye(otraPelicula);
         System.out.println("tiempo necesario para ver tus títulos favoritos estas vacaciones " + caluladora.getTiempoTotal() + " minutos.");
-
-
-
     }
 }
