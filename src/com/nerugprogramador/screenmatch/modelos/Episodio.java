@@ -1,9 +1,12 @@
 package com.nerugprogramador.screenmatch.modelos;
 
-public class Episodio {
+import com.nerugprogramador.screenmatch.calculos.Clasificacion;
+
+public class Episodio  implements Clasificacion {
     private int numero;
     private String nombre;
     private String serie;
+    private int totalVisualizaciones;
 
     public int getNumero() {
         return numero;
@@ -28,4 +31,12 @@ public class Episodio {
     public void setSerie(String serie) {
         this.serie = serie;
     }
-}
+
+    @Override
+    public int getClasificacion() {
+        if (totalVisualizaciones > 100) {
+            return 4;
+        }else {
+            return 2;
+        }
+    }
