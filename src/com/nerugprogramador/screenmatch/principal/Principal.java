@@ -1,10 +1,11 @@
+package com.nerugprogramador.screenmatch.principal;
+
 import com.nerugprogramador.screenmatch.calculos.CalculadoraDeTiempo;
 import com.nerugprogramador.screenmatch.calculos.FiltroRecomendacion;
 import com.nerugprogramador.screenmatch.modelos.Episodio;
 import com.nerugprogramador.screenmatch.modelos.Pelicula;
 import com.nerugprogramador.screenmatch.modelos.Serie;
 
-import javax.swing.text.FlowView;
 import java.util.ArrayList;
 
 public class Principal {
