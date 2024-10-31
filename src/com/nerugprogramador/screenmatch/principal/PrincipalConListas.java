@@ -7,6 +7,7 @@ import com.nerugprogramador.screenmatch.modelos.Titulo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class PrincipalConListas {
     public static void main(String[] args) {
@@ -47,5 +48,7 @@ public class PrincipalConListas {
         Collections.sort(lista);
         System.out.println("Lista de los titulos ordenados: " + lista);
 
+        lista.sort(Comparator.comparing(Titulo::getFechaDeLanzamiento));
+        System.out.println("Lista ordenada por fecha: " + lista);
     }
 }
