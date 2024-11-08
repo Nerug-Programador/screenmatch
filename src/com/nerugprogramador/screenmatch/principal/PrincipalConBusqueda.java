@@ -3,6 +3,7 @@ package com.nerugprogramador.screenmatch.principal;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.nerugprogramador.screenmatch.excepcion.ErrorEnConversionDeDuracionException;
 import com.nerugprogramador.screenmatch.modelos.Titulo;
 import com.nerugprogramador.screenmatch.modelos.TituloOmdb;
 
@@ -19,7 +20,9 @@ public class PrincipalConBusqueda {
         System.out.println("Escriba el nombre de la película: ");
         var busqueda = lectura.nextLine();
 
-        String direccion = "https://www.omdbapi.com/?t="+busqueda+"&apikey=c7700e77";
+        String direccion = "https://www.omdbapi.com/?t="+
+                busqueda.replace(" ", "+") +
+                "&apikey=c7700e77";
 
         try{
             HttpClient client = HttpClient.newHttpClient();
@@ -46,8 +49,8 @@ public class PrincipalConBusqueda {
             System.out.println(e.getMessage());
         }catch (IllegalArgumentException e){
             System.out.println("Error en l URI, Verifique la dirección");
-        }catch (Exception e){
-            System.out.println("Ocurrió un error inesperado");
+        }catch (ErrorEnConversionDeDuracionException e){
+            System.out.println(e.getMessage());
         }
         System.out.println("Finalizo la ejecución del programa");
     }

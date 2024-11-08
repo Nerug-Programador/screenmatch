@@ -1,6 +1,7 @@
 package com.nerugprogramador.screenmatch.modelos;
 
 import com.google.gson.annotations.SerializedName;
+import com.nerugprogramador.screenmatch.excepcion.ErrorEnConversionDeDuracionException;
 
 public class Titulo implements Comparable<Titulo>{
     @SerializedName("Title")
@@ -20,7 +21,10 @@ public class Titulo implements Comparable<Titulo>{
     public Titulo(TituloOmdb miTituloOmdb) {
         this.nombre = miTituloOmdb.title();
         this.fechaDeLanzamiento = Integer.parseInt(miTituloOmdb.year());
-        this.duracionEnMinutos = Integer.parseInt(miTituloOmdb.runtime().substring(0,2));
+        if (miTituloOmdb.runtime().contains("N/A")){
+            throw new ErrorEnConversionDeDuracionException("No pude convertir la duración, por que contiene un N/A");
+        }
+        this.duracionEnMinutos = Integer.parseInt(miTituloOmdb.runtime().substring(0,3).replace(" ", ""));
     }
 
     public String getNombre() {
