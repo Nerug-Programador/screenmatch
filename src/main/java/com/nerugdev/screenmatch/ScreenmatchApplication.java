@@ -1,5 +1,6 @@
 package com.nerugdev.screenmatch;
 
+import com.nerugdev.screenmatch.service.ConsumoAPI;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +14,9 @@ public class ScreenmatchApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("Hola mundo! desde Spring");
+		var consumoApi = new ConsumoAPI();
+//		var json = consumoApi.obtenerDatos("https://www.omdbapi.com/?t=matrix&apikey=c7700e77");
+		var json = consumoApi.obtenerDatos("https://coffee.alexflipnote.dev/random.json");
+		System.out.println(json);
 	}
 }
