@@ -20,7 +20,7 @@ public record DatosSerie(
         @Override
         public Integer deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
             String text = p.getText();
-            if ("N/A".equals(text)) {
+            if ("N/A".equals(text) ||  "null".equals(text)) {
                 return 0; // Valor predeterminado para "N/A"
             }
             return Integer.valueOf(text);
