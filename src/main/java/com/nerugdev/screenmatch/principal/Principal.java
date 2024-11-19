@@ -8,6 +8,8 @@ import com.nerugdev.screenmatch.service.ConsumoAPI;
 import com.nerugdev.screenmatch.service.ConvierteDatos;
 
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -62,12 +64,27 @@ public class Principal {
                 .limit(5)
                 .forEach(System.out::println);
 
-        //Convirtindo los datos a una lista del tipo episodio
+        //Convirtiendo los datos a una lista del tipo episodio
         List<Episodio> episodios = temporadas.stream()
                 .flatMap(t -> t.episodios().stream()
                     .map(d -> new Episodio(t.numero(),d)))
                 .collect(Collectors.toList());
 
         episodios.forEach(System.out::println);
+
+        // Búsqueda de episodios a partir de x año
+        System.out.println("Por favor indica el año a partir del cual deseas ver los episodios");
+        var fecha = teclado.nextLine();
+
+        LocalDate fechaBusqueda = LocalDate.of(Integer.parseInt(fecha), 1, 1);
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        episodios.stream()
+                .filter(e -> e.getFechaDeLanzamiento() != null && e.getFechaDeLanzamiento().isAfter(fechaBusqueda))
+                .forEach(e  -> System.out.println(
+                        "Temporada " + e.getTemporada() +
+                                "Episodio " + e.getTitulo() +
+                                "Fecha de lanzamiento " + e.getFechaDeLanzamiento().format(dtf)
+                ));
     }
 }
