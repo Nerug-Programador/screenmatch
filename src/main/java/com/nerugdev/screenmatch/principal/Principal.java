@@ -3,6 +3,7 @@ package com.nerugdev.screenmatch.principal;
 import com.nerugdev.screenmatch.model.DatosEpisodio;
 import com.nerugdev.screenmatch.model.DatosSerie;
 import com.nerugdev.screenmatch.model.DatosTemporadas;
+import com.nerugdev.screenmatch.model.Episodio;
 import com.nerugdev.screenmatch.service.ConsumoAPI;
 import com.nerugdev.screenmatch.service.ConvierteDatos;
 
@@ -60,5 +61,13 @@ public class Principal {
                 .sorted(Comparator.comparing(DatosEpisodio::evaluacion).reversed())
                 .limit(5)
                 .forEach(System.out::println);
+
+        //Convirtindo los datos a una lista del tipo episodio
+        List<Episodio> episodios = temporadas.stream()
+                .flatMap(t -> t.episodios().stream()
+                    .map(d -> new Episodio(t.numero(),d)))
+                .collect(Collectors.toList());
+
+        episodios.forEach(System.out::println);
     }
 }
