@@ -10,10 +10,7 @@ import com.nerugdev.screenmatch.service.ConvierteDatos;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Principal {
@@ -57,7 +54,7 @@ public class Principal {
                 flatMap(t -> t.episodios().stream()).collect(Collectors.toList());
 
         //Top 5 episodios
-        System.out.println("Top 5 episodios");
+/*        System.out.println("Top 5 episodios");
         datosEpisodios.stream()
                 .filter(e -> !e.evaluacion().equalsIgnoreCase("N/A"))
                 .peek(e -> System.out.println("Primer filtor (N/A) " + e))
@@ -66,7 +63,7 @@ public class Principal {
                 .map(e -> e.titulo().toUpperCase())
                 .peek(e -> System.out.println("Tercer filtro mayúscula (m>M) " + e))
                 .limit(5)
-                .forEach(System.out::println);
+                .forEach(System.out::println);*/
 
         //Convirtiendo los datos a una lista del tipo episodio
         List<Episodio> episodios = temporadas.stream()
@@ -90,5 +87,18 @@ public class Principal {
                                 "Episodio " + e.getTitulo() +
                                 "Fecha de lanzamiento " + e.getFechaDeLanzamiento().format(dtf)
                 ));*/
+
+        // Busca episodio por un pedazo de titulo
+        System.out.println("Por favor escriba el titulo del episodio que desea ver");
+        var pedazoTituo  = teclado.nextLine();
+        Optional<Episodio> episodioBuscado = episodios.stream()
+                .filter(e -> e.getTitulo().toUpperCase().contains(pedazoTituo.toUpperCase()))
+                .findFirst();
+        if(episodioBuscado.isPresent()){
+            System.out.println("Episodio encontrado");
+            System.out.println("Los datos son: " + episodioBuscado.get());
+        }else{
+            System.out.println("Episodio no encontrado");
+        }
     }
 }
